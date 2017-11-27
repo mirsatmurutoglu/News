@@ -11,6 +11,8 @@ import XCTest
 
 class NewsTests: XCTestCase {
     
+    var expectation: XCTestExpectation?
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,9 +23,24 @@ class NewsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetNewsSources() {
+        self.expectation = self.expectation(description: "test get news sources")
+        NewsApi.getNewsSources { (data, _) in
+            if data != nil {
+                self.expectation?.fulfill()
+            }
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testGetNewsArticles() {
+        self.expectation = self.expectation(description: "test get news articles")
+        NewsApi.getNewsItems("bbc-news") { (data, _) in
+            if data != nil {
+                self.expectation?.fulfill()
+            }
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testPerformanceExample() {
