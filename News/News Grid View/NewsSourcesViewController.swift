@@ -51,7 +51,7 @@ class NewsSourcesViewController: UIViewController {
         },
             didSelectItemHandler: { (item) in
                 self.selectedSource = item
-                self.performSegue(withIdentifier: "self.newsDetailSegue", sender: nil)
+                self.performSegue(withIdentifier: "newsView", sender: nil)
         })
         self.collectionView.dataSource = self.newsSourceCollectionViewAdapter
         self.collectionView.delegate = self.newsSourceCollectionViewAdapter

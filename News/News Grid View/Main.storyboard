@@ -42,11 +42,28 @@
                     <navigationItem key="navigationItem" id="9K4-RC-Jlo"/>
                     <connections>
                         <outlet property="collectionView" destination="GbZ-KB-pyt" id="bur-af-hBZ"/>
+                        <segue destination="cSZ-fs-rdl" kind="show" identifier="newsView" id="nrn-wd-FD8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="455.19999999999999" y="118.29085457271366"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5h0-Ud-qUC">
+            <objects>
+                <viewController id="cSZ-fs-rdl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7W3-wV-JWu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ihl-8F-Hy6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zDE-rs-TWB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fgy-zm-0xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gdp-Bg-PZo">
