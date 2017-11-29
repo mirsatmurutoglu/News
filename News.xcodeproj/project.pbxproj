@@ -165,11 +165,12 @@
 		667356681FCC3A5300ED31ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				667356721FCC620800ED31ED /* Main.storyboard */,
 				66130E081FCC32F8004D9D52 /* AppDelegate.swift */,
-				66130E0F1FCC32F8004D9D52 /* Assets.xcassets */,
+				6673566D1FCC3BFB00ED31ED /* Constants.swift */,
 				66130E111FCC32F8004D9D52 /* LaunchScreen.storyboard */,
 				66130E141FCC32F8004D9D52 /* Info.plist */,
-				6673566D1FCC3BFB00ED31ED /* Constants.swift */,
+				66130E0F1FCC32F8004D9D52 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				66130E0A1FCC32F8004D9D52 /* NewsSourcesViewController.swift */,
-				667356721FCC620800ED31ED /* Main.storyboard */,
 				664362131FCD95D80067522D /* NewsSourceCollectionViewCell.swift */,
 				664362191FCD9C0D0067522D /* NewsSourceCollectionViewCell.xib */,
 			);
