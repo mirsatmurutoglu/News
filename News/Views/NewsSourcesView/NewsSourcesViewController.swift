@@ -27,7 +27,7 @@ class NewsSourcesViewController: UIViewController {
     }
     
     func getNewsSources() {
-        NewsApi.getNewsSources { (data, error) in
+        NewsApi.getNewsSources { (data) in
             if let sources = data {
                 self.newsSources = sources
                 self.setupCollectionView()
@@ -55,6 +55,13 @@ class NewsSourcesViewController: UIViewController {
         })
         self.collectionView.dataSource = self.newsSourceCollectionViewAdapter
         self.collectionView.delegate = self.newsSourceCollectionViewAdapter
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newsView" {
+            let vc = segue.destination as! NewsViewController
+            vc.selectedSource = self.selectedSource
+        }
     }
 }
 

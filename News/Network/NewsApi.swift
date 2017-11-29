@@ -14,7 +14,7 @@ import SwiftyJSON
 public class NewsApi {
 
     // MARK: Get news Sources
-    class func getNewsSources(completion: @escaping (_ data: [NewsSource]?, _ error: String?) -> Void) {
+    class func getNewsSources(completion: @escaping (_ data: [NewsSource]?) -> Void) {
         
         let newsSourcesUrl = ApiDefaults.baseUrl + ApiDefaults.sourcesPath + "?apiKey=" + ApiDefaults.apiKey
         
@@ -22,19 +22,24 @@ public class NewsApi {
             if let data = response.data {
                 var sources = [NewsSource]()
                 let json = JSON(data)
-                for jsn in json["sources"].arrayValue {
-                    let source = NewsSource(json: jsn)
-                    sources.append(source)
+                if json["status"].stringValue == "ok" {
+                    for jsn in json["sources"].arrayValue {
+                        let source = NewsSource(json: jsn)
+                        sources.append(source)
+                    }
+                    completion(sources)
+                } else {
+                    completion(nil)
                 }
-                completion(sources, nil)
+                
             } else {
-                completion(nil, "no news")
+                completion(nil)
             }
         }
     }
     
     // MARK: Get News item from articles endpoint
-    class func getNewsItems(_ source: String, completion: @escaping (_ data: [Article]?, _ error: String?) -> Void) {
+    class func getNewsItems(_ source: String, completion: @escaping (_ data: [Article]?) -> Void) {
         
         let newsItemsUrl = ApiDefaults.baseUrl + ApiDefaults.headlinesPath + "?sources=\(source)" + "&apiKey=" + ApiDefaults.apiKey
         
@@ -42,13 +47,17 @@ public class NewsApi {
             if let data = response.data {
                 var articles = [Article]()
                 let json = JSON(data)
-                for jsn in json["articles"].arrayValue {
-                    let source = Article(json: jsn)
-                    articles.append(source)
+                if json["status"].stringValue == "ok" {
+                    for jsn in json["articles"].arrayValue {
+                        let source = Article(json: jsn)
+                        articles.append(source)
+                    }
+                    completion(articles)
+                } else {
+                    completion(nil)
                 }
-                completion(articles, nil)
             } else {
-                completion(nil, "no news")
+                completion(nil)
             }
         }
     }
