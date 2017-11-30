@@ -65,12 +65,45 @@
                                     <constraint firstAttribute="width" secondItem="YUO-fL-VdP" secondAttribute="height" multiplier="2:1" id="Vag-et-rwW"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jVe-4U-WTD">
+                                <rect key="frame" x="0.0" y="307.5" width="375" height="359.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="pWc-Pm-lNv">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWc-Pm-lNv" id="zp5-FI-VGx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cSZ-fs-rdl" id="FOR-y3-k3o"/>
+                                    <outlet property="delegate" destination="cSZ-fs-rdl" id="ljp-sF-oSQ"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jfe-jI-xFJ">
+                                <rect key="frame" x="0.0" y="252" width="375" height="56"/>
+                                <color key="barTintColor" white="0.90019531249999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cSZ-fs-rdl" id="bNL-5z-y0h"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jVe-4U-WTD" firstAttribute="trailing" secondItem="ihl-8F-Hy6" secondAttribute="trailing" id="0Li-wa-vAm"/>
                             <constraint firstItem="YUO-fL-VdP" firstAttribute="top" secondItem="ihl-8F-Hy6" secondAttribute="top" id="5AK-7c-slz"/>
                             <constraint firstItem="ihl-8F-Hy6" firstAttribute="trailing" secondItem="YUO-fL-VdP" secondAttribute="trailing" id="5HE-hf-LlV"/>
                             <constraint firstItem="YUO-fL-VdP" firstAttribute="width" secondItem="7W3-wV-JWu" secondAttribute="width" id="5a0-7e-2Xb"/>
+                            <constraint firstItem="jfe-jI-xFJ" firstAttribute="trailing" secondItem="ihl-8F-Hy6" secondAttribute="trailing" id="8NT-mo-FNY"/>
+                            <constraint firstItem="jVe-4U-WTD" firstAttribute="top" secondItem="jfe-jI-xFJ" secondAttribute="bottom" id="AVn-0r-qIc"/>
+                            <constraint firstItem="jVe-4U-WTD" firstAttribute="bottom" secondItem="ihl-8F-Hy6" secondAttribute="bottom" id="J49-4I-GWw"/>
+                            <constraint firstItem="jfe-jI-xFJ" firstAttribute="leading" secondItem="ihl-8F-Hy6" secondAttribute="leading" id="SEk-hR-foE"/>
+                            <constraint firstItem="jfe-jI-xFJ" firstAttribute="top" secondItem="YUO-fL-VdP" secondAttribute="bottom" id="hDl-5P-5h8"/>
+                            <constraint firstItem="jVe-4U-WTD" firstAttribute="leading" secondItem="ihl-8F-Hy6" secondAttribute="leading" id="xZb-Je-jmu"/>
                             <constraint firstItem="YUO-fL-VdP" firstAttribute="leading" secondItem="ihl-8F-Hy6" secondAttribute="leading" id="zpx-wL-ing"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ihl-8F-Hy6"/>
@@ -78,11 +111,13 @@
                     <navigationItem key="navigationItem" id="zDE-rs-TWB"/>
                     <connections>
                         <outlet property="carousel" destination="YUO-fL-VdP" id="929-uD-oUG"/>
+                        <outlet property="searchBar" destination="jfe-jI-xFJ" id="l8Q-Vf-KCj"/>
+                        <outlet property="tableView" destination="jVe-4U-WTD" id="uPV-Ym-rLx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgy-zm-0xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="118"/>
+            <point key="canvasLocation" x="1373.5999999999999" y="117.39130434782609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gdp-Bg-PZo">
