@@ -173,9 +173,15 @@ fileprivate class carouselCollectionViewCell: UICollectionViewCell {
     
     private func parseData(forSlide slide: ZKCarouselSlide) {
         if let imgUrl = slide.slideImageUrl {
-            ImageLoader.loadImageFromUrl(imgUrl) { (image, url) in
-                self.imageView.image = image
+            ImageLoader.loadImageFromUrl(imgUrl) { (image, returnedUrl) in
+                if imgUrl == returnedUrl {
+                    self.imageView.image = image
+                } else {
+                    self.imageView.image = nil
+                }
             }
+        } else {
+            self.imageView.image = nil
         }
         
         if let title = slide.slideTitle {
