@@ -49,6 +49,15 @@ class NewsViewController: UIViewController {
             }
         }
     }
+    
+    func searchNewsItems(text: String) {
+        NewsApi.getSearchedNewsItems(text, selectedSource.id) { (data) in
+            if let news = data {
+                self.searchResultNews = news
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension NewsViewController: UISearchBarDelegate {
@@ -71,7 +80,9 @@ extension NewsViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.tableView.reloadData()
+        if !searchText.isEmpty {
+            searchNewsItems(text: searchText)
+        }
     }
 }
 

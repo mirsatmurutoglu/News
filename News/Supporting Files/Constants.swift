@@ -13,4 +13,5 @@ enum ApiDefaults {
     static let apiKey = "eb69a065eac445dc92e2e79b6147bcf0"
     static let headlinesPath =  "top-headlines"
     static let sourcesPath = "sources"
+    static let everythingPath = "everything"
 }

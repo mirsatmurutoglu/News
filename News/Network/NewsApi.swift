@@ -61,4 +61,28 @@ public class NewsApi {
             }
         }
     }
+    
+    // MARK: Get News item from articles endpoint
+    class func getSearchedNewsItems(_ text: String,_ sources: String, completion: @escaping (_ data: [News]?) -> Void) {
+        
+        let searchUrl = ApiDefaults.baseUrl + ApiDefaults.everythingPath + "?q=\(text)&sources=\(sources)" + "&apiKey=" + ApiDefaults.apiKey
+        
+        Alamofire.request(searchUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData { response in
+            if let data = response.data {
+                var items = [News]()
+                let json = JSON(data)
+                if json["status"].stringValue == "ok" {
+                    for jsn in json["articles"].arrayValue {
+                        let source = News(json: jsn)
+                        items.append(source)
+                    }
+                    completion(items)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }
