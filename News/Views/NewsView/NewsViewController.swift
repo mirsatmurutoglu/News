@@ -16,11 +16,14 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var news: [News]!
+    var searchResultNews: [News]!
+
     var searchActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = selectedSource.name
+        self.tableView.estimatedRowHeight = 60
         getNews()
     }
     
@@ -31,8 +34,7 @@ class NewsViewController: UIViewController {
     private func setupCarousel() {
         var slides = [ZKCarouselSlide]()
         news.forEach { (item) in
-            let desc = item.description != nil ? item.description! : ""
-            let slide = ZKCarouselSlide(imageUrl: item.urlToImage, title: "", description: desc)
+            let slide = ZKCarouselSlide(imageUrl: item.urlToImage, title: "", description: item.description)
             slides.append(slide)
         }
         self.carousel.pageControl.numberOfPages = slides.count
@@ -42,7 +44,6 @@ class NewsViewController: UIViewController {
     func getNews() {
         NewsApi.getNewsItems(selectedSource.id) { (data) in
             if let news = data {
-                // do work
                 self.news = news
                 self.setupCarousel()
             }
@@ -58,6 +59,11 @@ extension NewsViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if !searchResultNews.isEmpty {
+            searchResultNews.removeAll()
+        }
+        searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -76,16 +82,17 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return searchResultNews != nil ? searchResultNews.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchResultTableViewCell
+        cell.setSearchResultNews(news: searchResultNews[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

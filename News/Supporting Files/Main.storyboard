@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,13 +70,66 @@
                                 <rect key="frame" x="0.0" y="307.5" width="375" height="359.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="pWc-Pm-lNv">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="106" id="pWc-Pm-lNv" customClass="SearchResultTableViewCell" customModule="News" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWc-Pm-lNv" id="zp5-FI-VGx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hiz-Ra-KSE">
+                                                    <rect key="frame" x="116" y="8" width="251" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ft1-ky-pq2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mn-Ox-PQo">
+                                                    <rect key="frame" x="116" y="37" width="252" height="37.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4t9-Be-xI4">
+                                                    <rect key="frame" x="8" y="8" width="100" height="89.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="h5l-Tm-wh5"/>
+                                                        <constraint firstAttribute="height" constant="90" id="w0e-Yp-zzC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53j-Br-dqC">
+                                                    <rect key="frame" x="116" y="82.5" width="251" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="cHq-bu-IGW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="53j-Br-dqC" secondAttribute="trailing" constant="8" id="1Va-M1-ahe"/>
+                                                <constraint firstItem="3mn-Ox-PQo" firstAttribute="leading" secondItem="4t9-Be-xI4" secondAttribute="trailing" constant="8" id="2y4-BV-hen"/>
+                                                <constraint firstItem="3mn-Ox-PQo" firstAttribute="trailing" secondItem="zp5-FI-VGx" secondAttribute="trailingMargin" constant="8" id="4ms-Iw-pz6"/>
+                                                <constraint firstItem="53j-Br-dqC" firstAttribute="leading" secondItem="4t9-Be-xI4" secondAttribute="trailing" constant="8" id="63P-bX-bnJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="53j-Br-dqC" secondAttribute="bottom" constant="8" id="7Y0-0U-ITl"/>
+                                                <constraint firstItem="Hiz-Ra-KSE" firstAttribute="leading" secondItem="4t9-Be-xI4" secondAttribute="trailing" constant="8" id="Bb5-Ld-d7U"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hiz-Ra-KSE" secondAttribute="trailing" constant="8" id="Eyp-f1-LgG"/>
+                                                <constraint firstItem="Hiz-Ra-KSE" firstAttribute="top" secondItem="zp5-FI-VGx" secondAttribute="top" constant="8" id="OU2-89-TO1"/>
+                                                <constraint firstItem="53j-Br-dqC" firstAttribute="top" secondItem="3mn-Ox-PQo" secondAttribute="bottom" constant="8" id="Q3c-Qn-BLM"/>
+                                                <constraint firstItem="4t9-Be-xI4" firstAttribute="leading" secondItem="zp5-FI-VGx" secondAttribute="leading" constant="8" id="fR3-7o-VTy"/>
+                                                <constraint firstItem="3mn-Ox-PQo" firstAttribute="top" secondItem="Hiz-Ra-KSE" secondAttribute="bottom" constant="8" id="j0z-dH-vNd"/>
+                                                <constraint firstItem="4t9-Be-xI4" firstAttribute="centerY" secondItem="zp5-FI-VGx" secondAttribute="centerY" id="lrG-n7-r79"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="53j-Br-dqC" id="Pue-n9-SJE"/>
+                                            <outlet property="descriptionLabel" destination="3mn-Ox-PQo" id="85U-c0-r54"/>
+                                            <outlet property="newsImageView" destination="4t9-Be-xI4" id="PLC-0U-mtR"/>
+                                            <outlet property="titleLabel" destination="Hiz-Ra-KSE" id="0MS-eD-G6V"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -83,10 +137,10 @@
                                     <outlet property="delegate" destination="cSZ-fs-rdl" id="ljp-sF-oSQ"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jfe-jI-xFJ">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search news" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfe-jI-xFJ">
                                 <rect key="frame" x="0.0" y="252" width="375" height="56"/>
                                 <color key="barTintColor" white="0.90019531249999996" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="cSZ-fs-rdl" id="bNL-5z-y0h"/>
                                 </connections>
