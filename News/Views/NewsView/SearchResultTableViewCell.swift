@@ -28,9 +28,13 @@ class SearchResultTableViewCell: UITableViewCell {
         self.descriptionLabel.text = news.description
         self.dateLabel.text = news.publishedAt
         if let url = news.urlToImage {
-            ImageLoader.loadImageFromUrl(url) { (image, _) in
-                self.newsImageView.image = image
+            ImageLoader.loadImageFromUrl(url) { (image, returnedUrl) in
+                if url == returnedUrl {
+                    self.newsImageView.image = image
+                }
             }
+        } else {
+            self.newsImageView.image = nil
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()

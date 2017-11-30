@@ -41,6 +41,12 @@ class NewsViewController: UIViewController {
         self.carousel.slides = slides
     }
 
+    func openNewsWebView(news: News) {
+        let vc = NewsWebViewController()
+        vc.newsUrl = news.url
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func getNews() {
         NewsApi.getNewsItems(selectedSource.id) { (data) in
             if let news = data {
@@ -68,7 +74,7 @@ extension NewsViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if !searchResultNews.isEmpty {
+        if searchResultNews != nil && !searchResultNews.isEmpty {
             searchResultNews.removeAll()
         }
         searchBar.resignFirstResponder()
@@ -100,6 +106,11 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchResultTableViewCell
         cell.setSearchResultNews(news: searchResultNews[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        openNewsWebView(news: searchResultNews[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
