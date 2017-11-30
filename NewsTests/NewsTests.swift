@@ -33,8 +33,8 @@ class NewsTests: XCTestCase {
         self.waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testGetNewsArticles() {
-        self.expectation = self.expectation(description: "test get news articles")
+    func testGetNewsItems() {
+        self.expectation = self.expectation(description: "test get news items")
         NewsApi.getNewsItems("bbc-news") { (data, _) in
             if data != nil {
                 self.expectation?.fulfill()

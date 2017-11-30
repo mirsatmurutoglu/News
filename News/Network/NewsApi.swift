@@ -39,20 +39,20 @@ public class NewsApi {
     }
     
     // MARK: Get News item from articles endpoint
-    class func getNewsItems(_ source: String, completion: @escaping (_ data: [Article]?) -> Void) {
+    class func getNewsItems(_ source: String, completion: @escaping (_ data: [News]?) -> Void) {
         
         let newsItemsUrl = ApiDefaults.baseUrl + ApiDefaults.headlinesPath + "?sources=\(source)" + "&apiKey=" + ApiDefaults.apiKey
         
         Alamofire.request(newsItemsUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData { response in
             if let data = response.data {
-                var articles = [Article]()
+                var items = [News]()
                 let json = JSON(data)
                 if json["status"].stringValue == "ok" {
                     for jsn in json["articles"].arrayValue {
-                        let source = Article(json: jsn)
-                        articles.append(source)
+                        let source = News(json: jsn)
+                        items.append(source)
                     }
-                    completion(articles)
+                    completion(items)
                 } else {
                     completion(nil)
                 }

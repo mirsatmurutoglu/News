@@ -21,7 +21,7 @@ struct NewsSource {
     }
 }
 
-struct Article {
+struct News {
     let title: String
     let author: String?
     let publishedAt: String?
