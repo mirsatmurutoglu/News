@@ -24,6 +24,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         self.title = selectedSource.name
         self.tableView.estimatedRowHeight = 60
+        carousel.delegate = self
         getNews()
     }
     
@@ -123,5 +124,11 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
+    }
+}
+
+extension NewsViewController: ZKCarouselDelegate {
+    func selectedSlider(index: Int) {
+        openNewsWebView(news: news[index])
     }
 }
