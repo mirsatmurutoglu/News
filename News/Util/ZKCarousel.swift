@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol ZKCarouselDelegate: class {
+    func selectedSlider(index: Int)
+}
+
 final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
+    weak var delegate: ZKCarouselDelegate?
+
     public var slides : [ZKCarouselSlide] = [] {
         didSet {
             self.collectionView.reloadData()
@@ -91,7 +97,7 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected\(indexPath.row)")
+        delegate?.selectedSlider(index: indexPath.row)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
