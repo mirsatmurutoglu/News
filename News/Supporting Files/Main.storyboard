@@ -128,6 +128,7 @@
                                             <outlet property="dateLabel" destination="53j-Br-dqC" id="Pue-n9-SJE"/>
                                             <outlet property="descriptionLabel" destination="3mn-Ox-PQo" id="85U-c0-r54"/>
                                             <outlet property="newsImageView" destination="4t9-Be-xI4" id="PLC-0U-mtR"/>
+                                            <outlet property="newsImageWidth" destination="h5l-Tm-wh5" id="76d-du-4nm"/>
                                             <outlet property="titleLabel" destination="Hiz-Ra-KSE" id="0MS-eD-G6V"/>
                                         </connections>
                                     </tableViewCell>

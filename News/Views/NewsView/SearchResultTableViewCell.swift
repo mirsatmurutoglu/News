@@ -14,7 +14,8 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
-
+    @IBOutlet weak var newsImageWidth: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -32,12 +33,15 @@ class SearchResultTableViewCell: UITableViewCell {
             ImageLoader.loadImageFromUrl(imgUrl) { (image, returnedUrl) in
                 if imgUrl == returnedUrl {
                     self.newsImageView.image = image
+                    self.newsImageWidth.constant = 100
                 } else {
                     self.newsImageView.image = nil
+                    self.newsImageWidth.constant = 0
                 }
             }
         } else {
             self.newsImageView.image = nil
+            self.newsImageWidth.constant = 0
         }
 
         self.setNeedsLayout()
